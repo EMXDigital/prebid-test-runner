@@ -2,6 +2,7 @@ const puppeteer = require('puppeteer');
 const path = require('path');
 const { json } = require('body-parser');
 
+console.log('ok lets log for github action');
 (async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
