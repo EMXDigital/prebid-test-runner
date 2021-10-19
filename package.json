@@ -1,0 +1,27 @@
+{
+  "name": "prebid-test-runner",
+  "version": "1.0.0",
+  "description": "Integration & Unit Test application for prebid js",
+  "main": "Prebid.js",
+  "scripts": {
+    "test": "node integration_test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EMXDigital/prebid-test-runner.git"
+  },
+  "keywords": [
+    "prebid",
+    "emx"
+  ],
+  "author": "Kevin Hagens",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EMXDigital/prebid-test-runner/issues"
+  },
+  "homepage": "https://github.com/EMXDigital/prebid-test-runner#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "puppeteer": "^10.4.0"
+  }
+}
