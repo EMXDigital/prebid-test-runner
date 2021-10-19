@@ -8,8 +8,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - run: git submodule init
-      - run: npm --prefix "./Prebid.js/" install && npm --prefix "./Prebid.js/" install gulp
-      - run: gulp --cwd "./Prebid.js/" build --modules=emx_digitalBidAdapter,appnexusBidAdapter
-      - run: gulp  --cwd "./Prebid.js/" test --file "test/spec/modules/emx_digitalBidAdapter_spec.js" 
+      - run: git submodule init && npm install
+      - run: npm --prefix "Prebid.js" install && npm --prefix "Prebid.js" install gulp
+      - run: gulp --cwd "Prebid.js" build --modules=emx_digitalBidAdapter,appnexusBidAdapter
+      - run: gulp --cwd "Prebid.js" test --file "test/spec/modules/emx_digitalBidAdapter_spec.js" 
       - run: node integration_test.js
