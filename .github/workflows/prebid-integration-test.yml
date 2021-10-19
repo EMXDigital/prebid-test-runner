@@ -12,4 +12,4 @@ jobs:
       - run: cd Prebid.js && npm install
       - run: cd Prebid.js && gulp build --modules=emx_digitalBidAdapter,appnexusBidAdapter
       - run: cd Prebid.js && gulp test --file "test/spec/modules/emx_digitalBidAdapter_spec.js" 
-      - run: npm isntall && node integration_test.js
+      - run: npm install && node integration_test.js
