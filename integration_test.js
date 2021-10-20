@@ -6,7 +6,6 @@ let logs = []; //concating logs because async tasks block from github actions
 (async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  console.log('running log before request');
   await page.setRequestInterception(true);
   page.on('request', async request => {
 
@@ -15,7 +14,7 @@ let logs = []; //concating logs because async tasks block from github actions
         
       //inspect url
         logs.push('EMX Header Bidding Request: ' + request.url());
-        console.log('running url test: ' + request.url());
+    
         //inspect json body
         const hbRequest = JSON.parse(request.postData());
         
@@ -66,10 +65,5 @@ let logs = []; //concating logs because async tasks block from github actions
   //load test adapter page
   await page.goto(`file:${path.join(__dirname, './prebid.html')}`);
   await browser.close();
- 
+  console.log('log after request has ended: ' + JSON.stringify(logs));
 })();
-
-setImmediate(() => {
-  console.log('run test');
-  console.log(logs.join("\r\n"));
-}, 'results:');
