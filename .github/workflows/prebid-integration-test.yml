@@ -14,4 +14,4 @@ jobs:
       - run: cd Prebid.js && gulp test --file "test/spec/modules/emx_digitalBidAdapter_spec.js" 
       - run: npm install 
       - run: node integration_test.js > integration_test_logs
-      - run: results=`cat integration_test_logs` && echo "$results"
+      - run: node print_github_actions.js 
