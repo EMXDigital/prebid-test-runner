@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const path = require('path');
 const { json } = require('body-parser');
- 
+let logs = []; //concating logs because async tasks block from github actions
 
 (async () => {
   const browser = await puppeteer.launch();
@@ -12,12 +12,8 @@ const { json } = require('body-parser');
 
     //when header bidding requests go out, capture emx request to server
     if(request.url().toString().includes('hb.emxdgt.com')){
-        let logs = []; //concating logs because async tasks block from github actions
-        setImmediate((arg) => {
-          console.log(logs.join("\r\n"));
-        }, 'results:');
-
-        //inspect url
+        
+      //inspect url
         logs.push('EMX Header Bidding Request: ' + request.url());
 
         //inspect json body
@@ -72,3 +68,8 @@ const { json } = require('body-parser');
   await browser.close();
  
 })();
+
+setImmediate(() => {
+  console.log('run test');
+  console.log(logs.join("\r\n"));
+}, 'results:');
