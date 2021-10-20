@@ -70,3 +70,10 @@ let logs = []; //concating logs because async tasks block from github actions
   }
  
 })();
+
+//print logs after 10 sec
+function print(logs) {
+  console.log(logs);
+}
+
+setTimeout(print, 10 * 1000,logs);
