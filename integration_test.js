@@ -67,15 +67,10 @@ let logs = []; //concating logs because async tasks block from github actions
  
 })();
 
-console.log('print logs here, not in function');
 //print logs after 10 sec
 function print(logs) {
-  console.log('logs inside of function');
-  for(const log of logs){
-    console.log(log);
-  }
+  console.log('result from integration test: ');
+  console.log(logs.join('\n'));
 }
-
-console.log('logs at the bottom of function');
 
 setTimeout(print, 10 * 1000,logs);
