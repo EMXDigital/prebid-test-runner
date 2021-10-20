@@ -6,12 +6,13 @@ const { json } = require('body-parser');
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.setRequestInterception(true);
+  let logs = []; //concating logs because async tasks block from github actions
   page.on('request', async request => {
 
     //when header bidding requests go out, capture emx request to server
     if(request.url().toString().includes('hb.emxdgt.com')){
         
-      let logs = []; //concating logs because async tasks block from github actions
+      
 
       //inspect url
       logs.push('EMX Header Bidding Request: ' + request.url());
@@ -51,7 +52,7 @@ const { json } = require('body-parser');
       }
 
       logs.push(JSON.stringify(hbRequest));
-        
+
       return;
 
     }else{
