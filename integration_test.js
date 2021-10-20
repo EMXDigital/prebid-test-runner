@@ -64,16 +64,14 @@ let logs = []; //concating logs because async tasks block from github actions
   //load test adapter page
   await page.goto(`file:${path.join(__dirname, './prebid.html')}`);
   await browser.close();
-
-  for(const log of logs){
-    console.log(log);
-  }
  
 })();
 
 //print logs after 10 sec
 function print(logs) {
-  console.log(logs);
+  for(const log of logs){
+    console.log(log);
+  }
 }
 
 setTimeout(print, 10 * 1000,logs);
