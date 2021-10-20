@@ -3,7 +3,7 @@ const path = require('path');
 const { json } = require('body-parser');
 let logs = []; //concating logs because async tasks block from github actions
 
-(async () => {
+async function run(){
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   
@@ -68,5 +68,12 @@ let logs = []; //concating logs because async tasks block from github actions
   for(const log of logs){
     console.log(log);
   }
+}
+
+run();
+
+/*
+(async () => {
+
  
-})();
+})(); */
