@@ -2,53 +2,55 @@ const puppeteer = require('puppeteer');
 const path = require('path');
 const { json } = require('body-parser');
 
-(async () => {
-/*
-  function loadAdapter(){
-    return new Promise(async(resolve, reject) => {
-      const browser = await puppeteer.launch();
-      const page = await browser.newPage();
-      await page.setRequestInterception(true);
+function loadAdapter(){
+  return new Promise(async(resolve, reject) => {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.setRequestInterception(true);
 
-      page.on('request', async request => {
+    page.on('request', async request => {
 
-        //when header bidding requests go out, capture emx request to server
-        if(request.url().toString().includes('hb.emxdgt.com')){
+      //when header bidding requests go out, capture emx request to server
+      if(request.url().toString().includes('hb.emxdgt.com')){
 
-          //inspect json body
-          const emxRequest = JSON.parse(request.postData());
-          if(!emxRequest){
-            reject(false);
-          }
-
-          resolve({
-            url : request.url(),
-            body : emxRequest 
-          });
-          
-        }else{
-            request.continue();
+        //inspect json body
+        const emxRequest = JSON.parse(request.postData());
+        if(!emxRequest){
+          reject(false);
         }
+
+        resolve({
+          url : request.url(),
+          body : emxRequest 
+        });
         
-      });
-    
-      //load test adapter page
-      await page.goto(`file:${path.join(__dirname, './prebid.html')}`);
-      await browser.close();
+      }else{
+          request.continue();
+      }
       
     });
-  } */
+  
+    //load test adapter page
+    await page.goto(`file:${path.join(__dirname, './prebid.html')}`);
+    await browser.close();
+    
+  });
+}
+
+(async () => {
+/*
+ */
 
   //run prebid adapter, get EMX request
-  /*const request = await loadAdapter();
+  const request = await loadAdapter();
   if(!request.url){
     console.error('Failed to get url to EMX header bidding adapter, make sure gulp build command was ran');
-  } */
+  } 
 
-  var request = {
+ /* var request = {
     url : 'http://www.google.com',
     body : '{"test" : "body"}'
-  };
+  }; */
 
   //inspect EMX request from adapter
   console.log('Inspection body for request: ' + request.url);
