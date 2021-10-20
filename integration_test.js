@@ -3,7 +3,7 @@ const path = require('path');
 const { json } = require('body-parser');
 
 (async () => {
-
+/*
   function loadAdapter(){
     return new Promise(async(resolve, reject) => {
       const browser = await puppeteer.launch();
@@ -37,17 +37,22 @@ const { json } = require('body-parser');
       await browser.close();
       
     });
-  }
+  } */
 
   //run prebid adapter, get EMX request
-  const request = await loadAdapter();
+  /*const request = await loadAdapter();
   if(!request.url){
     console.error('Failed to get url to EMX header bidding adapter, make sure gulp build command was ran');
-  }
+  } */
+
+  var request = {
+    url : 'http://www.google.com',
+    body : '{"test" : "body"}'
+  };
 
   //inspect EMX request from adapter
   console.log('Inspection body for request: ' + request.url);
-
+/*
   //do validation logic here....
   console.log('checking to ensure EMX header bidding request present');
   if(!request.body){
@@ -77,8 +82,8 @@ const { json } = require('body-parser');
   console.log('checking to ensure request is of type site or app');
   if(!request.body.site && !request.body.app){ //check to ensure site object or app object, app for education, always site here
     throw new Error('header bidding request must have site or app object')
-  }
-  
+  } */
+
   console.log(JSON.stringify(request.body));
 
  })()
