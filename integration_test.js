@@ -14,7 +14,7 @@ const { json } = require('body-parser');
     if(request.url().toString().includes('hb.emxdgt.com')){
         let logs = []; //concating logs because async tasks block from github actions
         setImmediate((arg) => {
-          console.log(logs.join('\n'));
+          console.log(logs.join("\r\n"));
         }, 'results:');
 
         //inspect url
