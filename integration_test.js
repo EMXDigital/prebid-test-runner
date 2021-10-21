@@ -37,8 +37,8 @@ function loadAdapter(){
       body : '{"test" : "body"}'
     });
     //load test adapter page
-    //await page.goto(`file:${path.join(__dirname, './prebid.html')}`);
-    //await browser.close();
+    await page.goto(`file:${path.join(__dirname, './prebid.html')}`);
+    await browser.close();
 
     
     
