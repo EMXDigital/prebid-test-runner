@@ -30,29 +30,22 @@ function loadAdapter(){
       }
       
     }); */
+
+  
     resolve({
       url : 'http://www.google.com',
       body : '{"test" : "body"}'
     });
     //load test adapter page
-    await page.goto(`file:${path.join(__dirname, './prebid.html')}`);
-    await browser.close();
+    //await page.goto(`file:${path.join(__dirname, './prebid.html')}`);
+    //await browser.close();
 
     
     
   });
 }
-
-async function someTask(){
-  return true;
-}
-
 (async () => {
-/*
- */
 
-const task = await someTask();
-  
   //run prebid adapter, get EMX request
   var request = await loadAdapter();
   if(!request.url){
@@ -99,5 +92,6 @@ const task = await someTask();
   } */
 
   console.log(JSON.stringify(request.body));
+  process.exit()
 
  })()
