@@ -8,7 +8,6 @@ function loadAdapter(){
     const page = await browser.newPage();
     await page.setRequestInterception(true);
 
-    /*
     page.on('request', async request => {
 
       //when header bidding requests go out, capture emx request to server
@@ -29,19 +28,12 @@ function loadAdapter(){
           request.continue();
       }
       
-    }); */
+    }); 
 
-  
-    resolve({
-      url : 'http://www.google.com',
-      body : '{"test" : "body"}'
-    });
     //load test adapter page
     await page.goto(`file:${path.join(__dirname, './prebid.html')}`);
     await browser.close();
 
-    
-    
   });
 }
 (async () => {
