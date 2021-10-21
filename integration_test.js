@@ -46,16 +46,17 @@ async function someTask(){
  */
 
 const task = await someTask();
+  
   //run prebid adapter, get EMX request
-/*) const request = await loadAdapter();
+  var request = await loadAdapter();
   if(!request.url){
     console.error('Failed to get url to EMX header bidding adapter, make sure gulp build command was ran');
-  }  */
+  }  
 
-  var request = {
+  /*var request = {
     url : 'http://www.google.com',
     body : '{"test" : "body"}'
-  }; 
+  }; */
 
   //inspect EMX request from adapter
   console.log('Inspection body for request: ' + request.url);
