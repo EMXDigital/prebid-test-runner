@@ -30,15 +30,15 @@ function loadAdapter(){
       }
       
     }); */
-  
-    //load test adapter page
-    await page.goto(`file:${path.join(__dirname, './prebid.html')}`);
-    await browser.close();
-
     resolve({
       url : 'http://www.google.com',
       body : '{"test" : "body"}'
     });
+    //load test adapter page
+    await page.goto(`file:${path.join(__dirname, './prebid.html')}`);
+    await browser.close();
+
+    
     
   });
 }
