@@ -8,18 +8,7 @@ function loadAdapter(){
     const page = await browser.newPage();
     await page.setRequestInterception(true);
 
-    //load test adapter page
-    await page.goto(`file:${path.join(__dirname, './prebid.html')}`);
-
-    const request = await getEMXRequest(page);
-   // await browser.close();
-    resolve(emxRequest);
-  });
-}
-
-function getEMXRequest(page){
-  return new Promise(async(resolve, reject) => {
-    page.on('request', async request => {
+    page.on('request', request => {
 
       //when header bidding requests go out, capture emx request to server
       if(request.url().toString().includes('hb.emxdgt.com')){
@@ -40,6 +29,17 @@ function getEMXRequest(page){
       }
       
     }); 
+
+    //load test adapter page
+    await page.goto(`file:${path.join(__dirname, './prebid.html')}`);
+    await browser.close();
+
+  });
+}
+
+function getEMXRequest(){
+  return new Promise(async(resolve, reject) => {
+
 
   });
 }
