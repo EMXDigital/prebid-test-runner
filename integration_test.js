@@ -90,5 +90,7 @@ class IntegrationTest{
 
 //run integration test
 const integrationTest = new IntegrationTest();
-await integrationTest.run();
+console.log("before")
+integrationTest.run();
+console.log("after")
 
