@@ -7,6 +7,7 @@ class IntegrationTest{
     console.log('did we get here?');
     const request = await this.runAdapter(); //run emx adapter for prebid.js
     if(!request){
+      console.log('whoops, I threw up a little....in my mouth');
       throw new Error('Failed to run prebid adapter. Be sure to build gulpfile for project to run correctly');
     }
 
