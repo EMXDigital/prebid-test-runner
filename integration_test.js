@@ -90,5 +90,5 @@ class IntegrationTest{
 
 //run integration test
 const integrationTest = new IntegrationTest();
-integrationTest.run();
+await integrationTest.run();
 
