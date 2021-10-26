@@ -4,6 +4,7 @@ const { json } = require('body-parser');
 
 class IntegrationTest{
   async run(){
+    console.log('did we get here?');
     const request = await this.runAdapter(); //run emx adapter for prebid.js
     if(!request){
       throw new Error('Failed to run prebid adapter. Be sure to build gulpfile for project to run correctly');
@@ -90,7 +91,7 @@ class IntegrationTest{
 
 //run integration test
 const integrationTest = new IntegrationTest();
-console.log("before")
+console.log("before");
 integrationTest.run();
-console.log("after")
+console.log("after");
 
