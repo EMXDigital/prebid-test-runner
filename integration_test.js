@@ -15,8 +15,9 @@ class IntegrationTest{
   }
 
   async runAdapter(){
+    console.log('how about here?');
     return new Promise(async(resolve, reject) => { //promise turn this into asnyc function
-      
+      console.log('or here?');
       //initialize headless browser
       const browser = await puppeteer.launch(); 
       const page = await browser.newPage();
@@ -24,7 +25,7 @@ class IntegrationTest{
       
       //callbak for when the page starts making request in network console
       page.on('request', async request => {
-  
+        console.log('yet again here?');
         //when header bidding requests go out, capture emx request to server
         if(request.url().toString().includes('hb.emxdgt.com')){
   
@@ -53,6 +54,7 @@ class IntegrationTest{
   }
   
   inspect(body){
+    console.log('and....here?');
     //do validation logic here....
     console.log('checking to ensure EMX header bidding request present');
     if(!body){
