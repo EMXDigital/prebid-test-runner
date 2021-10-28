@@ -76,10 +76,12 @@ const { json } = require('body-parser');
 		});
 
 		page.on('requestfailed', async err => {
-			console.log(`Request error for url: ${err._url}. Error: ${err._failureText}`);
+			console.error(`Request error for url: ${err._url}. Error: ${err._failureText}`);
+			process.exit(1)
 		});
 		page.on("pageerror", err => {
-			console.log(`Page error: ${err.toString()}`);
+			console.error(`Page error: ${err.toString()}`);
+			process.exit(1)
 		});
 
 		//load test adapter page
